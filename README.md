@@ -49,7 +49,7 @@ This might indicate changes in user acquisition quality, marketing efforts, or s
 ![](cum_rev.PNG)
 
 ## Revenue Prediction by Cohorts (USD):
-![](rev_pred)
+![](rev_pred.PNG)
 
 ### Insights:																								
 **Relevance of the "All Weekly Cohort Average:**															
