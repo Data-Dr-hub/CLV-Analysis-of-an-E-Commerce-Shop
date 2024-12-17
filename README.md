@@ -1,6 +1,5 @@
 # Customer Lifetime Value Analysis
 
-# Problem Statement:
 I assume to be a data analyst working in an e-commerce shop. This e-commerce shop is quite new and previously relied on 3rd party tools to analyze user behavior. 
 
 As it grew, this was not enough and they need me to help them understand business better. Particularly they are interested if their marketing spending is justifiable. They know that it costs them **2 US$** on average to acquire a new customer on their website.
