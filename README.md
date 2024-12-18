@@ -14,20 +14,24 @@ Data in the table contains records from 2020-11-01 until 2021-01-31.
 ![](clv.PNG)
 
 # Main Task:
-My manager has read on Shopify blog that one can calculate Customer Lifetime Value (CLV). He did not get all the details or how to actually calculate and asked my help to do it. He needs the following information:
-* Calculate Average Order Value (AOV) for full dataset
-* Calculate Purchase Frequency (PF) of all your customers
-* Customer Value (CV)
-* Estimate Customer Lifetime Value (CLV) assuming a customer Lifespan of 3 years
+I got my main task from the manager as he read some article that calculating CLV using Shopify’s formula is too simplistic. He has heard somewhere that using cohorts produces more reliable and actionable results. He therefore requested that I made adjustments to the previously done analysis.
+Here is the task summary from the manager:
+
+_Please use the raw_events table to answer follow up questions:_
+
+_TIP: imagine that current week is 2021-01-24 (the last weekly cohort you have in your dataset)._
+
+Additionally, we identified 2 problems with our previous analysis:
+
+1. _The previous analysis included only customers who purchased something, while marketing is counting all user registrations that they manage to bring to the ecommerce site. Pls, adjust your calculations to include all users who have been on our website, not only the one who purchased something._
+2. _The average customer does not tend to stay with the ecommerce site for too long. We want to see weekly picture using cohorts. We expect customers to stay no longer than 12 weeks with our ecommerce site._
 
 # My Thought Process:
-You looked at the raw data and decided to use `user_pseudo_id` to distinguish between different customers and use `event_name = ‘purchase’` to filter for events when customers purchased something. I also needed to identify the correct column in the table which represents the purchase amount in monetary units.
-The task to get the Customer Lifetime Value would be in stages:
-1. I wrote queries to create **Average Weekly Revenue by Cohort**,
-2. Then, I calculated Cumulative revenue by Cohort.
-3. And lastly, revenue predictions for same Cohorts for the next 12 weeks.
-
-* **_[Here](ClvQueries.sql) is my query to get the weekly average revenue by cohort._**
+* As the first step, I wrote a [query](ClvQueries.sql) to pull data of weekly revenue divided by registrations. Since in this particular site there is no concept of registration, we will simply use the first visit to the website as registration date (registration cohort).
+* I used `user_pseudo_id` to distinguish between users.
+* Then divide revenue in consequent weeks by the number of weekly registration numbers.
+* I then applied conditional formatting.
+* The resulting table is **Weekly Average Revenue** as shown below.
 * **_[Googlesheet CLV](https://docs.google.com/spreadsheets/d/1gJ4HS8z3sdNAtHL8-GleoRmNuKeb0-zl3OiOAmKf3Cs/edit?gid=502478635#gid=502478635) has the cohort charts._**
 
 
@@ -44,10 +48,23 @@ The task to get the Customer Lifetime Value would be in stages:
 Earlier cohorts (e.g., November 2020 registrations) show higher initial revenue compared to later cohorts (e.g., January 2021 registrations). 
 This might indicate changes in user acquisition quality, marketing efforts, or seasonal effects influencing user behavior.						
 
+Next, I produce the same chart, but the revenue / registrations for a particular week cohort was expressed as a cumulative sum. For this I simply added previous week revenue to current week’s revenue..
+The result is :
+
 ## Cumulative Revenue by Cohorts (USD):
 ![](cum_rev.PNG)
 
+* Basically, this chart above shows growth of revenue by registered users in cohort for n weeks after registration. 
+* While numbers below summarize those values in monetary terms and percentage terms. 
+* This provides a coherent view of how much revenue you can expect to grow based on the available  historical data.
+
 ## Revenue Prediction by Cohorts (USD):
+- Next, I focused on the future and tried to predict the missing data. 
+- Missing data in this case is the revenue we should expect from later acquired user cohorts. 
+- For example, for users whose first session happened on 2021-01-24 week we have only their first week revenue which is `0.19$` per user who started their first session in this week. Though we are not sure what will happen in the next 12 weeks.
+- For this, I simply used previously calculated Cumulative growth % to predict all 12 future weeks values (ex. for this cohort we can calculate expected revenue for week 1 as 0.19 USD x (1 + 23.29%) = 0.24 USD, for week 2 as 0.24 USD x (1 + 12.26%) = 0.27 USD). 
+- Using `Avg. cumulative growth` for each week, we can calculate that based on 0.19$ initial value, we can expect 0.35 USD as revenue on week 12. I have therefore provided a chart which calculates these numbers for all future weeks (up till week 12). As seen below:
+
 ![](rev_pred.PNG)
 
 ### Insights:																								
