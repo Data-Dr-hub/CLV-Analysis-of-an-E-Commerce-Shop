@@ -90,7 +90,7 @@ The result is :
 **Recommendation:** Increase marketing spend on channels or strategies used during these weeks, as they seem to attract higher-value customers. 
                      Analyze what might have contributed to the higher CLV (e.g., promotions, marketing messages, or seasonal factors) and replicate similar strategies."											
 											
-3. **Segment Customers Based on CLV Predictions:**																					
+2. **Segment Customers Based on CLV Predictions:**																					
   Group customers into different segments based on their predicted CLV (e.g., high, medium, low).
 											
   **Recommendation:** Allocate resources differently for each segment. 
