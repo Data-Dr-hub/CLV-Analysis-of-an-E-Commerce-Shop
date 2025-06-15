@@ -85,12 +85,14 @@ The result is :
 											
 1. **Invest More in High-Performing Cohorts (Nov - Dec 2020):**											
   The cohorts from Nov 8, Nov 15, and Nov 22, 2020, show high predicted CLV values (above $2.30). 
-  It indicates that customers acquired during this period are more valuable."											
+  It indicates that customers acquired during this period are more valuable."
+									
 **Recommendation:** Increase marketing spend on channels or strategies used during these weeks, as they seem to attract higher-value customers. 
                      Analyze what might have contributed to the higher CLV (e.g., promotions, marketing messages, or seasonal factors) and replicate similar strategies."											
 											
-2. **Segment Customers Based on CLV Predictions:**																					
-  Group customers into different segments based on their predicted CLV (e.g., high, medium, low).											
+3. **Segment Customers Based on CLV Predictions:**																					
+  Group customers into different segments based on their predicted CLV (e.g., high, medium, low).
+											
   **Recommendation:** Allocate resources differently for each segment. 
                       For high-CLV customers, invest in premium customer support or exclusive offers. 
                       For low-CLV customers, focus on upselling or cross-selling to improve their value."											
